@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +9,7 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
     crossorigin="anonymous">
+  <link rel="stylesheet" href=index.css>
   <style>
     .time-left-chart {
       width: 100%;
@@ -39,113 +39,84 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-    <table class="cleaning-period table table-striped table-dark mt-3">
-      <tr>
-        <th id="title" scope="col">
-          Cleaning Period (from ///date-variable/// to ///date-variable///)
-        </th>
-      </tr>
-    </table>
+  <div class="content">
 
-    <table class="clean-schedule table table-striped table-dark mt-3">
-      <thead>
-        <tr>
-          <th scope="col">
-            <i class="fas fa-users fa-2x"></i>
-          </th>
-          <th scope="col">
-            <i class="fas fa-home fa-2x"></i>
-          </th>
-          <th scope="col">
-            <i class="fas fa-comments fa-2x"></i>
-            </i>
-            </i>
-          </th>
-          <th scope="col">
-            <i class="fas fa-stopwatch fa-2x"></i>
-            </i>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td scope="row" class="person">Daniel
-            <div class="news">
-              <span class="badge"></span>
-            </div>
-          </td>
-          <td>Kitchen
-            <div class="radio">
-              <input type="radio" name="">
-            </div>
-          </td>
+    <div class="container-fluid">
+            <table class="cleaning-period table table-striped table-dark mt-3">
+                    <tr>
+                            <th scope="col">
+                                Cleaning Period (from ///date-variable/// to ///date-variable///)
+                            </th>
+                        </tr>
+                </table>
 
-          <td>notes
-            <div class="text">
-              <textarea name="name" rows="3" cols="15"></textarea>
+        <table class="clean-schedule table table-striped table-dark mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <i class="fas fa-users fa-2x"></i>
+                    </th>
+                    <th scope="col">
+                        <i class="fas fa-home fa-2x"></i>
+                    </th>
+                    <th scope="col">
+                        <i class="fas fa-comments fa-2x"></i>
+                        </i>
+                        </i>
+                    </th>
+                    <th scope="col">
+                        <i class="fas fa-stopwatch fa-2x"></i>
+                        </i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row" class="person">Daniel <div class="news">
+                      <span class="badge"></span>
+                    </div> </td>
+                    <td>Kitchen</td>
+                    <td>notes <div class="text"> <textarea name="name" rows="3" cols="15"></textarea>
 
-            </div>
-            <button>gelesen</button>
-          </td>
-          <td>
-            <div class="time-left-chart">
+                    </div><button>gelesen</button> </td>
+                    <td>
+                        <div class="time-left-chart">
 
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td scope="row" class="person">John
-            <div class="news">
-              <span class="badge"></span>
-            </div>
-          </td>
-          <td>Toilet
-            <div class="radio">
-              <input type="radio" name="">
-            </div>
-          </td>
-          <td>notes
-            <div class="text">
-              <textarea name="name" rows="3" cols="15"></textarea>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row" class="person">John <div class="news">
+                      <span class="badge"></span>
+                    </div></td>
+                    <td>Toilet</td>
+                    <td>notes <div class="text"> <textarea name="name" rows="3" cols="15"></textarea>
 
-            </div>
-            <button>gelesen</button>
-          </td>
-          <td>
-            <div class="time-left-chart">
+                    </div>
+                  <button>gelesen</button></td>
+                    <td>
+                        <div class="time-left-chart">
 
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td scope="row" class="person">Darius
-            <div class="news">
-              <span class="badge"></span>
-            </div>
-          </td>
-          <td>Corridor
-            <div class="radio">
-              <input type="radio" name="">
-            </div>
-          </td>
-          <td>notes
-            <div class="text">
-              <textarea name="name" rows="3" cols="15"></textarea>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row" class="person">Darius <div class="news">
+                      <span class="badge"></span>
+                    </div></td>
+                    <td>Corridor</td>
+                    <td>notes <div class="text"> <textarea name="name" rows="3" cols="15"></textarea>
 
-            </div>
-            <button>gelesen</button>
-          </td>
-          <td>
-            <div class="time-left-chart"></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+                    </div><button>gelesen</button></td>
+                    <td>
+                        <div class="time-left-chart"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
   </div>
-
-
-
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -217,12 +188,6 @@
 
       }
     }
-
-
-
-
-
-
 
 
   </script>
