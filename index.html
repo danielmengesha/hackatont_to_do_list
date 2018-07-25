@@ -190,7 +190,7 @@
 
 
     function callOnce() {
-      //Do Stuff Here
+      console.log('hallo');
       title.innerHTML = `Cleaning Period from ${day} of ${months[date.getMonth()]} to ${newDay} of ${months[nextCleaningDateInMs.getMonth()]}`;
       setInterval(function startNewPeriod() {
         title.innerHTML = `Cleaning Period from ${day} of ${months[date.getMonth()]} to ${newDay} of ${months[nextCleaningDateInMs.getMonth()]}`;
@@ -206,9 +206,9 @@
 
 
     for (radio of radioButtons) {
-      if(radio.checked)
       radio.addEventListener('click', callOnce);
     }
+
 
 
     let flatmate = {
