@@ -1,0 +1,445 @@
+@charset "UTF-8";
+
+body {
+  background: #edf0f1;
+  padding: 0;
+}
+
+body, input, button {
+  font-family: 'Roboto', sans-serif;
+}
+/* .time-left-chart {
+            width: 200px;
+            height: 20px;
+            background-color: yellow;
+        } */
+td {
+    height: 100px;
+    text-align: left;
+    padding: 1.5rem !important;
+}
+th {
+    text-align: left;
+    vertical-align: middle;
+    padding: 1.5rem !important;
+}
+th:last-child{
+    text-align: center;
+  }
+
+
+/**styles for the start button**/
+
+
+input[type=button] {
+  margin-left: 2rem;
+  width: 80px;
+  height: 50px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: blueviolet;
+  color: yellow;
+}
+
+/*****************styles for the icons*********/
+i{
+  color: yellow;
+}
+
+/***************styles for the check buttons *****************/
+
+.check{
+  text-align:left;
+  margin-left: 1rem;
+}
+
+input[type=checkbox] {
+   display: none;
+}
+
+.check-cleaning-label{
+  padding-top: 2rem!important;
+}
+
+
+#check-cleaning-1 + label::before {
+  width: 23px;
+  height: 23px;
+  background-color: white;
+  border: 1px solid blueviolet;
+  margin-top: -1rem;
+  content: "";
+  position: absolute;
+  border-radius: 4px; }
+
+#check-cleaning-1:checked + label::before {
+  content: "";
+  display: block;
+  z-index: 1000;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  background-image: url(images/check_transparent.png);
+  background-size: 22px 22px; }
+
+
+
+
+#check-cleaning-2 + label::before {
+  width: 23px;
+  height: 23px;
+  background-color: white;
+  border: 1px solid blueviolet;
+  margin-top: -1rem;
+  content: "";
+  position: absolute;
+  border-radius: 4px; }
+
+#check-cleaning-2:checked + label::before {
+  content: "";
+  display: block;
+  z-index: 1000;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  background-image: url(images/check_transparent.png);
+  background-size: 22px 22px; }
+
+
+
+
+#check-cleaning-3 + label::before {
+  width: 23px;
+  height: 23px;
+  background-color: white;
+  border: 1px solid blueviolet;
+  margin-top: -1rem;
+  content: "";
+  position: absolute;
+  border-radius: 4px; }
+
+#check-cleaning-3:checked + label::before {
+  content: "";
+  display: block;
+  z-index: 1000;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  background-image: url(images/check_transparent.png);
+  background-size: 22px 22px; }
+
+/****************styles for the stars and checked stars****************/
+
+.fa {
+  color: white;
+  padding: 10px;
+  margin-top: 30px;
+}
+.checked {
+  color: yellow !important;
+}
+
+
+.noFill {
+  fill: none;
+}
+.schedule{
+    width: 70%;
+    float: left;
+}
+td{
+    background-color: #69ceca;
+    color: black;
+}
+.person{
+   color: yellow;
+float: left;
+    margin-top: 50px;
+}
+.checked{
+  color: orange;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.todo-content{
+    position: fixed;
+    width: 30%;
+    float: right;
+    background-color: #ccc;
+    height: 600px;
+    right: 0px;
+    margin-top: 81px;
+}
+
+header {
+    width: 30%;
+    float: right;
+  height: 80px;
+  position: fixed;
+  padding: 15px;
+  top: 0;
+  right: 0;
+  z-index: 5;
+
+  background: #69ceca;
+  box-shadow: 0px 2px 4px rgba(44, 62, 80, 0.15);
+}
+
+header input {
+    width: 100%;
+  height: 50px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  text-indent: 18px;
+  padding: 0 60px 0 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px 25px 25px 5px;
+  border: 0px;
+  box-shadow: none;
+  outline: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+header input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+header input:-moz-input-placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+header input::-moz-input-placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+header input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+header button {
+  width: 50px;
+  height: 50px;
+
+  position:absolute;
+  top:15px;
+  right:10px;
+  z-index:2;
+
+  border-radius: 25px;
+  background: #fff;
+  border: 0px;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+header button svg {
+  width: 16px;
+  height: 16px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  margin: -8px 0 0 -8px;
+}
+
+header button svg .fill {
+  fill: #25b99a;
+}
+
+.container {
+  width: 100%;
+  float: right;
+  padding: 0px;
+}
+
+ul.todo {
+  width: 100%;
+  float: right;
+}
+
+ul.todo li {
+  width: 100%;
+  min-height: 50px;
+  float: right;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  line-height: 22px;
+
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
+
+  padding: 14px 100px 14px 14px;
+  word-break: break-word;
+}
+
+ul.todo li:last-of-type {
+  margin: 0;
+}
+
+ul.todo li .buttons {
+  width: 100px;
+  height: 50px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+ul.todo li .buttons button {
+  width: 50px;
+  height: 50px;
+  float: left;
+  background: none;
+  position: relative;
+  border: 0px;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+ul.todo li .buttons button:last-of-type:before {
+  content: '';
+  width: 1px;
+  height: 30px;
+  background: #edf0f1;
+
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+
+ul.todo li .buttons button svg {
+  width: 22px;
+  height: 22px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  margin: -11px 0 0 -11px;
+}
+
+ul.todo li .buttons button.complete svg {
+  border-radius: 11px;
+  border: 1.5px solid #25b99a;
+
+  transition: background 0.2s ease;
+}
+
+ul.todo#completed li .buttons button.complete svg {
+  background: #25b99a;
+  border: 0px;
+}
+
+ul.todo:not(#completed) li .buttons button.complete:hover svg {
+  background: rgba(37, 185, 154, 0.75);
+}
+
+ul.todo:not(#completed) li .buttons button.complete:hover svg .fill {
+  fill: #fff;
+}
+
+ul.todo#completed li .buttons button.complete svg .fill {
+  fill: #fff;
+}
+
+ul.todo li .buttons button svg .fill {
+  transition: fill 0.2s ease;
+}
+
+ul.todo li .buttons button.remove svg .fill {
+  fill: #c0cecb;
+}
+
+ul.todo li .buttons button.remove:hover svg .fill {
+  fill: #e85656;
+}
+
+ul.todo li .buttons button.complete svg .fill {
+  fill: #25b99a;
+}
+
+ul.todo#completed {
+  position: relative;
+  padding: 60px 0 0 0;
+}
+
+ul.todo#completed:before {
+  content: '';
+  width: 150px;
+  height: 1px;
+  background: #d8e5e0;
+
+  position: absolute;
+  top: 30px;
+  left: 50%;
+
+  margin: 0 0 0 -75px;
+}
+
+ul.todo#todo:empty:after {
+  content: 'You have nothing to-do!';
+  margin: 15px 0 0 0;
+}
+
+ul.todo#completed:empty:after {
+  content: 'You have yet to complete any tasks.';
+}
+
+ul.todo#todo:after,
+ul.todo#completed:after {
+  width: 40%;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+}
+
+
+
+
+
+/* .container{
+   width: 50%;
+   float: right;
+} */
+
+
+
+#clockdiv{
+    color: black;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+}
+
+#clockdiv > div{
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+#clockdiv div > span{
+    padding: 10px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 16px;
