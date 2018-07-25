@@ -2,17 +2,17 @@
 
 body {
   background: #edf0f1;
-  padding: 80px 0 0 0;
+  padding: 0;
 }
 
 body, input, button {
   font-family: 'Roboto', sans-serif;
 }
-.time-left-chart {
-            width: 100%;
+/* .time-left-chart {
+            width: 200px;
             height: 20px;
             background-color: blueviolet;
-        }
+        } */
         td {
             height: 100px;
             text-align: left;
@@ -35,13 +35,18 @@ body, input, button {
     float: left;
 }
 td{
-    background-color: red;
+    background-color: #69ceca;
     color: black;
 }
 .person{
-   color: green;
+   color: yellow;
 float: left;
     margin-top: 50px;
+}
+.checked{
+  color: orange;
+  padding: 10px;
+  margin-top: 30px;
 }
 
 .todo-content{
@@ -51,6 +56,7 @@ float: left;
     background-color: #ccc;
     height: 600px;
     right: 0px;
+    margin-top: 81px;
 }
 
 header {
@@ -63,7 +69,7 @@ header {
   right: 0;
   z-index: 5;
 
-  background: #25b99a;
+  background: #69ceca;
   box-shadow: 0px 2px 4px rgba(44, 62, 80, 0.15);
 }
 
@@ -139,7 +145,7 @@ header button svg .fill {
 .container {
   width: 100%;
   float: right;
-  padding: 15px;
+  padding: 0px;
 }
 
 ul.todo {
@@ -290,3 +296,37 @@ ul.todo#completed:after {
   font-size: 12px;
   color: #aaa;
 }
+
+
+
+
+
+/* .container{
+   width: 50%;
+   float: right;
+} */
+
+
+
+#clockdiv{
+    color: black;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+}
+
+#clockdiv > div{
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+#clockdiv div > span{
+    padding: 10px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 16px;
