@@ -192,6 +192,7 @@ function rotateFlatmates() {
 //////////////*****function to start the app*///////////////
 
 function start() {
+  
   title.innerHTML = `CLEANING PERIOD FROM ${day} OF ${months[date.getMonth()].toUpperCase()} TO ${newDay} OF ${months[nextCleaningDateInMs.getMonth()].toUpperCase()}`;
   console.log(title);
   rotateFlatmates();
