@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>clean Schedule</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
   <link rel="stylesheet" href=index.css>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>clean Schedule</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-        crossorigin="anonymous">
-    <style>
-        .time-left-chart {
-            width: 100%;
-            height: 20px;
-            background-color: blueviolet;
-        }
+  <style>
+    .time-left-chart {
+      width: 100%;
+      height: 20px;
+      background-color: blueviolet;
+    }
 
 
-        td {
-            width: 175px;
-            height: 100px;
-            text-align: left;
-            padding: 1.5rem !important;
-        }
+    td {
+      height: 100px;
+      text-align: left;
+      padding: 1.5rem !important;
+    }
 
-        th {
-            text-align: left;
-            vertical-align: middle;
-            padding: 1.5rem !important;
+    th {
+      text-align: left;
+      vertical-align: middle;
+      padding: 1.5rem !important;
 
-        }
-        th:last-child{
-            text-align: center;
+    }
 
-        }
-    </style>
+    th:last-child {
+      text-align: center;
+
+    }
+  </style>
 </head>
 
 <body>
@@ -119,20 +118,79 @@
 
   </div>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
-        crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
 
 
 
-    <script>
+  <script>
 
-    </script>
+    /////////********************period cleaning on title ********************** ////////////////////
+
+
+
+
+
+    // we retrieve the cleaning period title
+    let title = document.querySelector('#title');
+
+    // we declare some variables for time calculations
+
+    let date = new Date();
+    let day = date.getDate();
+    let newDate = date.setDate(day + 10);
+    let nextCleaningDateInMs = new Date(newDate);
+    let newDay = nextCleaningDateInMs.getDate();
+
+    let now = Date.now();
+
+    // 10 days period in milliseconds
+    console.log(newDate - now);
+
+    // we set the Months names in an array to call them by name
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    // we print the thing at the title
+
+
+
+
+
+    function callOnce() {
+      //Do Stuff Here
+      title.innerHTML = `Cleaning Period from ${day} of ${months[date.getMonth()]} to ${newDay} of ${months[nextCleaningDateInMs.getMonth()]}`;
+      setInterval(function startNewPeriod() {
+        title.innerHTML = `Cleaning Period from ${day} of ${months[date.getMonth()]} to ${newDay} of ${months[nextCleaningDateInMs.getMonth()]}`;
+      }, newDate - now);
+    };
+
+
+
+    ////////////////**************switching the names after the cleaning period**********************//////////////////
+
+
+    let radioButtons = document.querySelectorAll('.radio');
+
+
+    for (radio of radioButtons) {
+      if(radio.checked)
+      radio.addEventListener('click', callOnce);
+    }
+
+
+    let flatmate = {
+      name: ["Daniel", "John", "Darius"],
+      penalty: function () {
+
+      }
+    }
+
+
+  </script>
 
 </body>
 
