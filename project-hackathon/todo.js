@@ -1,8 +1,16 @@
+function reload(){
+  location.replace("file:///home/dci/hackaton_to_do_list/project-hackathon/todo.html");
+}
+
 
 let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')) : {
   todo: [],
   completed: []
 };
+// let dataApp = (localStorage.getItem('todo-app')) ? JSON.parse(localStorage.getItem('todo-app')) : {
+// stars:[],
+// mates:[]
+// };
 
 // Remove and complete icons in SVG format
 let removeSVG = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" style="enable-background:new 0 0 22 22;" xml:space="preserve"><rect class="noFill" width="22" height="22"/><g><g><path class="fill" d="M16.1,3.6h-1.9V3.3c0-1.3-1-2.3-2.3-2.3h-1.7C8.9,1,7.8,2,7.8,3.3v0.2H5.9c-1.3,0-2.3,1-2.3,2.3v1.3c0,0.5,0.4,0.9,0.9,1v10.5c0,1.3,1,2.3,2.3,2.3h8.5c1.3,0,2.3-1,2.3-2.3V8.2c0.5-0.1,0.9-0.5,0.9-1V5.9C18.4,4.6,17.4,3.6,16.1,3.6z M9.1,3.3c0-0.6,0.5-1.1,1.1-1.1h1.7c0.6,0,1.1,0.5,1.1,1.1v0.2H9.1V3.3z M16.3,18.7c0,0.6-0.5,1.1-1.1,1.1H6.7c-0.6,0-1.1-0.5-1.1-1.1V8.2h10.6V18.7z M17.2,7H4.8V5.9c0-0.6,0.5-1.1,1.1-1.1h10.2c0.6,0,1.1,0.5,1.1,1.1V7z"/></g><g><g><path class="fill" d="M11,18c-0.4,0-0.6-0.3-0.6-0.6v-6.8c0-0.4,0.3-0.6,0.6-0.6s0.6,0.3,0.6,0.6v6.8C11.6,17.7,11.4,18,11,18z"/></g><g><path class="fill" d="M8,18c-0.4,0-0.6-0.3-0.6-0.6v-6.8c0-0.4,0.3-0.6,0.6-0.6c0.4,0,0.6,0.3,0.6,0.6v6.8C8.7,17.7,8.4,18,8,18z"/></g><g><path class="fill" d="M14,18c-0.4,0-0.6-0.3-0.6-0.6v-6.8c0-0.4,0.3-0.6,0.6-0.6c0.4,0,0.6,0.3,0.6,0.6v6.8C14.6,17.7,14.3,18,14,18z"/></g></g></g></svg>';
@@ -138,7 +146,7 @@ let newDay = nextCleaningDateInMs.getDate();
 
 let now = Date.now();
 
-// 10 days period in milliseconds
+//////////// 10 days period in milliseconds
 console.log(newDate - now);
 let mSUntilNewStart = (newDate - now);
 
@@ -191,15 +199,21 @@ function rotateFlatmates() {
 
 //////////////*****function to start the app*///////////////
 
+
+
 function start() {
-  
-  title.innerHTML = `CLEANING PERIOD FROM ${day} OF ${months[date.getMonth()].toUpperCase()} TO ${newDay} OF ${months[nextCleaningDateInMs.getMonth()].toUpperCase()}`;
+
+  title.innerHTML = `CLEANING PERIOD FROM ${day} OF ${months[date.getMonth()-1].toUpperCase()} TO ${newDay} OF ${months[nextCleaningDateInMs.getMonth()].toUpperCase()}`;
   console.log(title);
   rotateFlatmates();
-  setInterval(function startNewPeriod() {
-    title.innerHTML = `CLEANING PERIOD FROM ${day} OF ${months[date.getMonth()].toUpperCase()} TO ${newDay} OF ${months[nextCleaningDateInMs.getMonth()].toUpperCase()}`;
-
+  initializeClock('clockdiv', deadline);
+  setInterval(
+    
+    function startNewPeriod() {
+    title.innerHTML = `CLEANING PERIOD FROM ${day} OF ${months[date.getMonth()-1]} TO ${newDay} OF ${months[nextCleaningDateInMs.getMonth()].toUpperCase()}`;
+    initializeClock('clockdiv', deadline);
     rotateFlatmates();
+    reload();
   }, mSUntilNewStart);
 };
 
@@ -267,33 +281,59 @@ function getTimeRemaining(endtime) {
     'minutes': minutes,
     'seconds': seconds
   };
-}
+ }
+ 
+ function initializeClock(id, endtime) {
+   var clock = document.getElementById(id);
+   var daysSpan = clock.querySelector('.days');
+   var hoursSpan = clock.querySelector('.hours');
+   var minutesSpan = clock.querySelector('.minutes');
+   var secondsSpan = clock.querySelector('.seconds');
+ function getTimeRemaining(endtime) {
+   var t = Date.parse(endtime) - Date.parse(new Date());
+   var seconds = Math.floor((t / 1000) % 60);
+   var minutes = Math.floor((t / 1000 / 60) % 60);
+   var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+   var days = Math.floor(t / (1000 * 60 * 60 * 24));
+   return {
+     'total': t,
+     'days': days,
+     'hours': hours,
+     'minutes': minutes,
+     'seconds': seconds
+   };
+ }
+ 
+ 
+   function updateClock() {
+     var t = getTimeRemaining(endtime);
+ 
+     daysSpan.innerHTML = t.days;
+     daysSpan.style.fontSize ="2rem";
+     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+     hoursSpan.style.fontSize ="2rem";
+     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+     minutesSpan.style.fontSize ="2rem";
+     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+     secondsSpan.style.fontSize ="2rem";
+ 
+     if (t.total <= 0) {
+       clearInterval(timeinterval);
+     }
+   }
+    
+      updateClock();
+      var timeinterval = setInterval(updateClock, 1000);
+ }
+ 
+   
+ var deadline = new Date(Date.parse(new Date()) + 10 * 24 * 60 * 60 * 1000);
 
-function initializeClock(id, endtime) {
-  var clock = document.getElementById(id);
-  var daysSpan = clock.querySelector('.days');
-  var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
-
-  function updateClock() {
-    var t = getTimeRemaining(endtime);
-
-    daysSpan.innerHTML = t.days;
-    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-    if (t.total <= 0) {
-      clearInterval(timeinterval);
-    }
-  }
 
 
 
-  updateClock();
-  var timeinterval = setInterval(updateClock, 1000);
-}
 
-var deadline = new Date(Date.parse(new Date()) + 10 * 24 * 60 * 60 * 1000);
-initializeClock('clockdiv', deadline);
+//  document.getElementById("start").addEventListener("click", function(){
+ 
+//  initializeClock('clockdiv', deadline);
+//  });
