@@ -1,5 +1,5 @@
 
-let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')):{
+let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')) : {
   todo: [],
   completed: []
 };
@@ -12,7 +12,7 @@ renderTodoList();
 
 // User clicked on the add button
 // If there is any text inside the item field, add that text to the todo list
-document.getElementById('add').addEventListener('click', function() {
+document.getElementById('add').addEventListener('click', function () {
   let value = document.getElementById('item').value;
   if (value) {
     addItem(value);
@@ -26,7 +26,7 @@ document.getElementById('item').addEventListener('keydown', function (e) {
   }
 });
 
-function addItem (value) {
+function addItem(value) {
   addItemToDOM(value);
   document.getElementById('item').value = '';
 
@@ -36,7 +36,7 @@ function addItem (value) {
 
 function renderTodoList() {
   if (!data.todo.length && !data.completed.length)
-      return;
+    return;
 
   for (let i = 0; i < data.todo.length; i++) {
     let value = data.todo[i];
@@ -85,7 +85,7 @@ function completeItem() {
   dataObjectUpdated();
 
   // Check if the item should be added to the completed list or to re-added to the todo list
-  let target = (id === 'todo') ? document.getElementById('completed'):document.getElementById('todo');
+  let target = (id === 'todo') ? document.getElementById('completed') : document.getElementById('todo');
 
   parent.removeChild(item);
   target.insertBefore(item, target.childNodes[0]);
@@ -93,7 +93,7 @@ function completeItem() {
 
 // Adds a new item to the todo list
 function addItemToDOM(text, completed) {
-  let list = (completed) ? document.getElementById('completed'):document.getElementById('todo');
+  let list = (completed) ? document.getElementById('completed') : document.getElementById('todo');
 
   let item = document.createElement('li');
   item.innerText = text;
@@ -122,45 +122,177 @@ function addItemToDOM(text, completed) {
   list.insertBefore(item, list.childNodes[0]);
 }
 
+/////////********************set the period cleaning on the title ********************** ////////////////////
+
+
+// we retrieve the cleaning period title
+let title = document.querySelector('#title');
+
+// we declare some variables for time calculations
+
+let date = new Date();
+let day = date.getDate();
+let newDate = date.setDate(day + 10);
+let nextCleaningDateInMs = new Date(newDate);
+let newDay = nextCleaningDateInMs.getDate();
+
+let now = Date.now();
+
+// 10 days period in milliseconds
+console.log(newDate - now);
+let mSUntilNewStart = (newDate - now);
+
+// we set the Months names in an array to call them by name
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+
+
+//////////////************rotate flatmates every ten days**********//////////////////
+
+// get all flatmates inside the table
+let persons = document.querySelectorAll(".person");
+
+//create a flatmate object 
+
+let flatmate = {
+  name: ["DANIEL", "JOHN", "DARIUSH"],
+  starsCount: function () {
+
+  }
+}
+let rooms = {
+  name: ["Kitchen", "Toilet", "Corridor"],
+  cleanState: function () {
+
+  }
+}
+
+
+////////////*******rotate the flatmate**********/
+
+
+let newArrayPersons = [];
+function rotateFlatmates() {
+
+  for (let i = 0; i < flatmate.name.length; i++) {
+    newArrayPersons.push(flatmate.name[i + 1]);
+  }
+  newArrayPersons.pop();
+  newArrayPersons.push(flatmate.name[0]);
+
+  for (let i = 0; i < persons.length; i++) {
+    persons[i].innerHTML = newArrayPersons[i];
+
+  }
+  return flatmate.name = newArrayPersons;
+
+}
+
+
+//////////////*****function to start the app*///////////////
+
+function start() {
+  
+  title.innerHTML = `CLEANING PERIOD FROM ${day} OF ${months[date.getMonth()].toUpperCase()} TO ${newDay} OF ${months[nextCleaningDateInMs.getMonth()].toUpperCase()}`;
+  console.log(title);
+  rotateFlatmates();
+  setInterval(function startNewPeriod() {
+    title.innerHTML = `CLEANING PERIOD FROM ${day} OF ${months[date.getMonth()].toUpperCase()} TO ${newDay} OF ${months[nextCleaningDateInMs.getMonth()].toUpperCase()}`;
+
+    rotateFlatmates();
+  }, mSUntilNewStart);
+};
+
+
+
+////////////////**************add stars on click**********************//////////////////
+
+
+let checkButtons = document.querySelectorAll('input[type=checkbox]');
+let stars = document.querySelectorAll('.fa');
+
+
+
+for (checkButton of checkButtons) {
+  checkButton.addEventListener('click', addStar);
+}
+
+
+let count1 = 0;
+let count2 = 0;
+let count3 = 0;
+function addStar(id) {
+  if ((count1 === 1) && (this.id == "check-cleaning-1")) {
+    alert(`You've already checked once during this cleaning period!`);
+  } else if ((count2 === 0) && (this.id === "check-cleaning-1")) {
+    alert(`Are you sure that you've cleaned the ${rooms.name[0]}?`);
+    stars[count1].classList.add('checked');
+    count1++;
+  }
+
+  if ((count2 === 1) && (this.id == "check-cleaning-2")) {
+    alert(`You've already checked once during this cleaning period!`);
+  } else if ((count2 === 0) && (this.id === "check-cleaning-2")) {
+    alert(`Are you sure that you've cleaned the ${rooms.name[1]}?`);
+    stars[count2 + 3].classList.add('checked');
+    console.log(count2 + 3);
+    count2++;
+  }
+
+  if ((count3 === 1) && (this.id == "check-cleaning-3")) {
+    alert(`You've already checked once during this cleaning period!`);
+  } else if ((count3 === 0) && (this.id === "check-cleaning-3")) {
+    alert(`Are you sure that you've cleaned the ${rooms.name[2]}?`);
+    stars[count3 + 6].classList.add('checked');
+    console.log(count3 + 6);
+    count3++;
+  }
+}
+
+
+
+
+
+
 function getTimeRemaining(endtime) {
- var t = Date.parse(endtime) - Date.parse(new Date());
- var seconds = Math.floor((t / 1000) % 60);
- var minutes = Math.floor((t / 1000 / 60) % 60);
- var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
- var days = Math.floor(t / (1000 * 60 * 60 * 24));
- return {
-   'total': t,
-   'days': days,
-   'hours': hours,
-   'minutes': minutes,
-   'seconds': seconds
- };
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
 }
 
 function initializeClock(id, endtime) {
- var clock = document.getElementById(id);
- var daysSpan = clock.querySelector('.days');
- var hoursSpan = clock.querySelector('.hours');
- var minutesSpan = clock.querySelector('.minutes');
- var secondsSpan = clock.querySelector('.seconds');
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
 
- function updateClock() {
-   var t = getTimeRemaining(endtime);
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
 
-   daysSpan.innerHTML = t.days;
-   hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-   minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-   secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 
-   if (t.total <= 0) {
-     clearInterval(timeinterval);
-   }
- }
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
 
- 
 
- updateClock();
- var timeinterval = setInterval(updateClock, 1000);
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
 }
 
 var deadline = new Date(Date.parse(new Date()) + 10 * 24 * 60 * 60 * 1000);

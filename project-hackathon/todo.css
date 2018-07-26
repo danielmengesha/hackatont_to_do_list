@@ -11,21 +11,134 @@ body, input, button {
 /* .time-left-chart {
             width: 200px;
             height: 20px;
-            background-color: blueviolet;
+            background-color: yellow;
         } */
-        td {
-            height: 100px;
-            text-align: left;
-            padding: 1.5rem !important;
-        }
-        th {
-            text-align: left;
-            vertical-align: middle;
-            padding: 1.5rem !important;
-        }
-        th:last-child{
-            text-align: center;
-        }
+td {
+    height: 100px;
+    text-align: left;
+    padding: 1.5rem !important;
+}
+th {
+    text-align: left;
+    vertical-align: middle;
+    padding: 1.5rem !important;
+}
+th:last-child{
+    text-align: center;
+  }
+
+
+/**styles for the start button**/
+
+
+input[type=button] {
+  margin-left: 2rem;
+  width: 80px;
+  height: 50px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: blueviolet;
+  color: yellow;
+}
+
+/*****************styles for the icons*********/
+i{
+  color: yellow;
+}
+
+/***************styles for the check buttons *****************/
+
+.check{
+  text-align:left;
+  margin-left: 1rem;
+}
+
+input[type=checkbox] {
+   display: none;
+}
+
+.check-cleaning-label{
+  padding-top: 2rem!important;
+}
+
+
+#check-cleaning-1 + label::before {
+  width: 23px;
+  height: 23px;
+  background-color: white;
+  border: 1px solid blueviolet;
+  margin-top: -1rem;
+  content: "";
+  position: absolute;
+  border-radius: 4px; }
+
+#check-cleaning-1:checked + label::before {
+  content: "";
+  display: block;
+  z-index: 1000;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  background-image: url(images/check_transparent.png);
+  background-size: 22px 22px; }
+
+
+
+
+#check-cleaning-2 + label::before {
+  width: 23px;
+  height: 23px;
+  background-color: white;
+  border: 1px solid blueviolet;
+  margin-top: -1rem;
+  content: "";
+  position: absolute;
+  border-radius: 4px; }
+
+#check-cleaning-2:checked + label::before {
+  content: "";
+  display: block;
+  z-index: 1000;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  background-image: url(images/check_transparent.png);
+  background-size: 22px 22px; }
+
+
+
+
+#check-cleaning-3 + label::before {
+  width: 23px;
+  height: 23px;
+  background-color: white;
+  border: 1px solid blueviolet;
+  margin-top: -1rem;
+  content: "";
+  position: absolute;
+  border-radius: 4px; }
+
+#check-cleaning-3:checked + label::before {
+  content: "";
+  display: block;
+  z-index: 1000;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  background-image: url(images/check_transparent.png);
+  background-size: 22px 22px; }
+
+/****************styles for the stars and checked stars****************/
+
+.fa {
+  color: white;
+  padding: 10px;
+  margin-top: 30px;
+}
+.checked {
+  color: yellow !important;
+}
+
 
 .noFill {
   fill: none;
